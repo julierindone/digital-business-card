@@ -19,7 +19,6 @@
   --footer-bg: hsl(199, 15%, 75%);
   --headline: hsl(199, 65%, 15%);
   --linkedin-bg: hsl(212, 78%, 60%);
-  --outer-border-radius: 0.6rem;
   --paragraph-weight: 400;
   --social-bg: hsl(199, 15%, 52%);
   --subheading-weight: 600;
@@ -115,8 +114,7 @@ p, a {
     background-size: cover;
     background-position: center calc(100% + 90px);
     height: 20rem;
-    border-top-left-radius: var(--outer-border-radius);
-    border-top-right-radius: var(--outer-border-radius);
+    border-radius: 0.6rem 0.6rem 0 0;
   }
 
   p.occupation {
@@ -166,7 +164,6 @@ p, a {
       margin-right: 0.4rem;
     }
   }
-
 }
 
 /* FOOTER (AND ICONS) */
@@ -181,8 +178,7 @@ footer {
   gap: 1.9rem;
   justify-content: center;
   background: var(--footer-bg);
-  border-bottom-left-radius: var(--outer-border-radius);
-  border-bottom-right-radius: var(--outer-border-radius);
+  border-radius: 0 0 0.6rem 0.6rem;
   padding-block: 1.1rem;
 
   i {
