@@ -1,111 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  /* Properties - both modes */
   color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
+  background: hsl(188, 1%, 12%);
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0.04rem;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Variables - Light mode/default */
+  --accent: hsl(199, 75%, 22%);
+  --bg: #F3F3F3;
+  --email-bg: #FFFFFF --email-bg: #EEEEEE;
+  --email-border: hsl(254, 6%, 75%) 1px solid;
+  --email-text: #252525;
+  --footer-bg: hsl(199, 15%, 75%);
+  --headline: hsl(199, 65%, 15%);
+  --linkedin-bg: hsl(212, 78%, 60%);
+  --outer-border-radius: 0.6rem;
+  --paragraph-weight: 400;
+  --social-bg: hsl(199, 15%, 52%);
+  --subheading-weight: 600;
+  --text: hsl(199, 50%, 15%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+    --accent: hsl(188, 20%, 65%);
+    --bg: #1a1a1a;
+    --email-bg: #EEEEEE;
+    --email-border: unset;
+    --email-text: #252525;
+    --footer-bg: #161619;
+    --headline: #f5f5f5;
+    --paragraph-weight: 300;
+    --social-bg: hsl(254, 6%, 40%);
+    --subheading-weight: 500;
+    --text: #DCDCDC;
   }
 }
 
-body {
-  margin: 0;
-}
+/* LAYOUT */
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+html, body {
+  margin: 0 auto;
 }
+
+div.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  width: 20rem;
+  height: 48.75rem;
+  min-block-size: 100%;
+  border-radius: 0.7rem;
+  margin: 2rem auto 0 auto;
+}
+
+h1, h2, p, a {
+  margin-block: 0;
+}
+
+.about-interests, .info-links {
+  padding-inline: 1.3em;
+}
+
+.about-interests {
+  flex: 1;
+}
+
+.about, .interests {
+  margin-top: 0.8rem;
+}
+
+/* TYPOGRAPHY */
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: 1.5rem;
+  color: var(--headline);
 }
+
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  font-size: 1.07rem;
+  margin-bottom: 0.3rem
+}
+
+p {
+  font-size: 0.87rem;
+  line-height: 1.3;
+}
+
+p, a {
+  font-weight: var(--paragraph-weight);
+}
+
+/* INFO SECTION */
+
+#info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  padding-bottom: .5rem;
+
+  .info-image {
+    /* TODO: Edit out santa face */
+    background-image: url('/src/assets/profile_pic.jpg');
+    background-size: cover;
+    background-position: center calc(100% + 90px);
+    height: 20rem;
+    border-top-left-radius: var(--outer-border-radius);
+    border-top-right-radius: var(--outer-border-radius);
+  }
+
+  p.occupation {
+    color: var(--accent);
+    font-size: .88rem;
+    font-weight: var(--subheading-weight);
+    margin-top: 0.08rem;
+  }
+
+  a.website {
+    display: block;
+    font-size: .7rem;
+    text-decoration-line: none;
+    color: unset;
+    margin-top: 0.6rem;
   }
 }
-p {
-  margin: 0;
+
+.info-links {
+  display: flex;
+  gap: 1.05rem;
+
+  a.link-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.3rem;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    font-weight: 550;
+    border-radius: .45rem;
+
+    &:first-child {
+      background: var(--email-bg);
+      color: var(--email-text);
+      border: var(--email-border);
+    }
+
+    &:last-child {
+      background: var(--linkedin-bg);
+      text-shadow: 0 0 0.25px black;
+      color: white;
+    }
+
+    & i {
+      margin-right: 0.4rem;
+    }
+  }
+
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* FOOTER (AND ICONS) */
+
+i {
+  font-size: 1rem;
+  width: unset;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+footer {
+  display: flex;
+  gap: 1.9rem;
+  justify-content: center;
+  background: var(--footer-bg);
+  border-bottom-left-radius: var(--outer-border-radius);
+  border-bottom-right-radius: var(--outer-border-radius);
+  padding-block: 1.1rem;
+
+  i {
+    font-size: 1.35rem;
+    color: var(--text);
+
+    &::before {
+      background: var(--social-bg);
+      padding: 0.12em;
+      border-radius: 0.15rem;
+      color: var(--bg);
+    }
+  }
 }
